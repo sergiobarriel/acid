@@ -1,0 +1,42 @@
+name: 'build'
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: '💻 setup node'
+      uses: actions/setup-node@v2
+      with:
+        node-version: '22'
+
+    - name: '⬇️ install dependencies'
+      run: 'npm install'
+      working-directory: './code'
+
+    - name: '⚙️ build'
+      run: 'npm run build'
+      working-directory: './code'
+
+    - name:  '🚀 upload artifacts'
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: './dist'
+
+    - name:  '🚀 publish'
+      id: deployment
+      uses: actions/deploy-pages@v4        
