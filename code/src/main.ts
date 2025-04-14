@@ -123,7 +123,7 @@ function GlitchEffect(imageData: ImageData, noise: boolean) : ImageData {
     
     if(noise) {
 
-        if (Math.random() < 0.05) {
+        if (Math.random() < 0.01) {
 
             const noiseY = Math.floor(Math.random() * height);
             const noiseHeight = Math.floor(Math.random() * 10) + 1;
