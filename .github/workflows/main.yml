@@ -35,7 +35,7 @@ jobs:
     - name:  '🚀 upload artifacts'
       uses: actions/upload-pages-artifact@v3
       with:
-        path: './dist'
+        path: './code/dist'
 
     - name:  '🚀 publish'
       id: deployment
