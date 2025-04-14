@@ -1,0 +1,20 @@
+{
+  "name": "tensor-app",
+  "version": "1.0.0",
+  "description": "Tensor application",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc && copyfiles -u 1 public/**/* dist",
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Sergio Barriel",
+  "license": "MIT",
+  "devDependencies": {
+    "copyfiles": "^2.4.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.9.5"
+  }
+}
