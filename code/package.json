@@ -1,7 +1,7 @@
 {
-  "name": "tensor-app",
+  "name": "acid",
   "version": "1.0.0",
-  "description": "Tensor application",
+  "description": "ACID visuals",
   "main": "dist/main.js",
   "scripts": {
     "build": "tsc && copyfiles -u 1 public/**/* dist",
