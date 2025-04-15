@@ -1,5 +1,8 @@
 function Startup() : void {
+
     BindStream('video', 'canvas');
+
+    BindFullScreen();
 }
 
 async function BindStream(videoTag: string, canvasTag: string) : Promise<void> {
@@ -48,11 +51,11 @@ function Draw(canvasTag: string, videoElement: HTMLVideoElement) : void {
 
             if(image) {
 
-                image = detectEdges(image);
+                // image = detectEdges(image);
 
                 image = ConvertToGrayScale(image);
 
-                image = GlitchEffect(image, true);
+                //image = GlitchEffect(image, true);
 
                 context?.putImageData(image, 0, 0);
             }
@@ -262,5 +265,40 @@ function detectEdges(imageData: ImageData): ImageData {
     
     return new ImageData(resultData, width, height);
 }
+
+
+function BindFullScreen(): void {
+
+    const button = document.getElementById('fullScreen');
+    const container = document.querySelector('.container') as HTMLElement;
+    
+    if (button && container) {
+        button.addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if ((container as any).mozRequestFullScreen) { // Firefox
+                    (container as any).mozRequestFullScreen();
+                } else if ((container as any).webkitRequestFullscreen) { // Chrome, Safari
+                    (container as any).webkitRequestFullscreen();
+                } else if ((container as any).msRequestFullscreen) { // IE/Edge
+                    (container as any).msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if ((document as any).mozCancelFullScreen) {
+                    (document as any).mozCancelFullScreen();
+                } else if ((document as any).webkitExitFullscreen) {
+                    (document as any).webkitExitFullscreen();
+                } else if ((document as any).msExitFullscreen) {
+                    (document as any).msExitFullscreen();
+                }
+            }
+        });
+    }
+}
+
 
 Startup();

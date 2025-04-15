@@ -4,7 +4,7 @@
   "description": "ACID visuals",
   "main": "dist/main.js",
   "scripts": {
-    "build": "tsc && copyfiles -u 1 public/**/* dist",
+    "build": "tsc && sass public/styles.scss public/styles.css --style compressed && copyfiles -u 1 public/**/* dist",
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,6 +15,7 @@
   "devDependencies": {
     "copyfiles": "^2.4.1",
     "rimraf": "^3.0.2",
+    "sass": "^1.86.3",
     "typescript": "^4.9.5"
   }
 }
