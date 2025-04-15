@@ -33,6 +33,9 @@ function Draw(canvasTag: string, videoElement: HTMLVideoElement) : void {
 
     let canvasHtmlElement = document.getElementById(canvasTag) as HTMLCanvasElement;
 
+    canvasHtmlElement.width = canvasHtmlElement.clientWidth;
+    canvasHtmlElement.height = canvasHtmlElement.clientHeight;
+    
     if(canvasHtmlElement) {
 
         let context = canvasHtmlElement.getContext('2d');
@@ -168,6 +171,7 @@ function ConvertToGrayScale(frame: ImageData) : ImageData {
 let previousFrame: ImageData | null = null;
 
 function detectEdges(imageData: ImageData): ImageData {
+
     const width = imageData.width;
     const height = imageData.height;
     const data = imageData.data;
