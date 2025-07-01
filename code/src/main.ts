@@ -55,7 +55,7 @@ function Draw(canvasTag: string, videoElement: HTMLVideoElement) : void {
 
                 image = ConvertToGrayScale(image);
 
-                //image = GlitchEffect(image, true);
+                image = GlitchEffect(image, true);
 
                 context?.putImageData(image, 0, 0);
             }
