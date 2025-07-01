@@ -51,7 +51,7 @@ function Draw(canvasTag: string, videoElement: HTMLVideoElement) : void {
 
             if(image) {
 
-                // image = detectEdges(image);
+                image = detectEdges(image);
 
                 image = ConvertToGrayScale(image);
 
